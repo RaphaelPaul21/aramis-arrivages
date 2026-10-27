@@ -27,5 +27,3 @@ npm run build
 Consulter la [documentation de l’application](vite-project/README.md) pour les routes, les règles de données, les tests navigateur et l’hébergement.
 
 Les données sont un import historique. Les commandes et le profil sont enregistrés dans le navigateur ; aucune commande n’est transmise à un fournisseur.
-
-Projet basé sur [Catcathg/datavisualisation](https://github.com/Catcathg/datavisualisation), avec conservation de son historique Git.
