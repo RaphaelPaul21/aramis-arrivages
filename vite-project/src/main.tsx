@@ -1,13 +1,18 @@
-import {createRoot} from 'react-dom/client';
-import App from './App';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import '@fontsource/roboto/latin-400.css';
+import '@fontsource/roboto/latin-500.css';
+import '@fontsource/roboto/latin-700.css';
 import './index.css';
-import {BrowserRouter as Router} from 'react-router-dom';
+import App from './App';
 
-const rootElement:any = document.getElementById('root');
-const root = createRoot(rootElement);
-
-root.render(
-  <Router>
-    <App />
-  </Router>
+const root = document.getElementById('root');
+if (!root) throw new Error('Le point de montage de l’application est absent.');
+createRoot(root).render(
+  <StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </StrictMode>,
 );

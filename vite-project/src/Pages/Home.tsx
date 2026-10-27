@@ -1,13 +1,4 @@
-import Content from '../Components/Content'
-import Nav from '../Components/Nav'
-
-
+import Content from '../Components/Content';
 export default function Home() {
-  return (
-    <>
-    <Nav/>
-    <Content/>
-    </>
-  )
+  return <Content />;
 }
-

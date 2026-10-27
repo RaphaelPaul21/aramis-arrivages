@@ -1,52 +1,57 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import FolderIcon from '@mui/icons-material/Folder';
-import DataSetStockVente from '../../data/aramis-auto/stock-vente.json'
-import StockIcon from '@/assets/Images/purchase-icon.svg'
-import './List.css'
-
-const Demo = styled('div')(({ theme }) => ({
-    backgroundColor: theme.palette.background.paper,
-}));
-
-const StyledIconDiv = styled('div')(({ nbStock }) => ({
-    backgroundColor: nbStock < 10 ? 'red' : 'green',
-}));
-
-export default function SimpleListWithIcons() {
-    const ModelsStockVente = DataSetStockVente.reduce((acc, item) => {
-        if (item.VEHICULE_MARQUE === item.VEHICULE_MARQUE) {
-            acc[item.VEHICULE_MODELE] = (acc[item.VEHICULE_MODELE] || 0) + 1;
-        } return acc;
-    }, {});
-
-    console.log(ModelsStockVente)
-
-    return (
-        <Box sx={{ flexGrow: 1, maxWidth: 235 }}>
-            <Demo> 
-                <List sx={{ height: 360, overflow: 'auto' }}>
-                    {Object.entries(ModelsStockVente).map(([model, nbStock], index) => (
-                        <ListItem className="itemList" key={index}>
-                            <StyledIconDiv nbStock={nbStock}>
-                                <ListItemIcon>
-                                    {nbStock < 10 ? (
-                                        <img className="icon" src={StockIcon} alt="Stock icon" />
-                                    ) : (
-                                        <img className="icon" src={StockIcon} alt="Entretien icon" />
-                                    )}
-                                </ListItemIcon>
-                            </StyledIconDiv>
-                            <ListItemText primary={`${model}`} />
-                        </ListItem>
-                    ))}
-                </List>
-            </Demo>
-        </Box>
-    );
+import { Link } from 'react-router-dom';
+import type { ModelSummary } from '../lib/inventory';
+import { modelPath } from '../lib/inventory';
+import { number } from '../lib/format';
+import Icon from './Icon';
+export default function ModelList({ models }: { models: ModelSummary[] }) {
+  return (
+    <div className="table-scroll">
+      <table className="data-table model-table">
+        <thead>
+          <tr>
+            <th scope="col">Marque / modèle</th>
+            <th scope="col">En arrivage</th>
+            <th scope="col">Préparation terminée</th>
+            <th scope="col">
+              <span className="sr-only">Actions</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {models.map((model) => (
+            <tr key={model.key}>
+              <th scope="row">
+                <Link className="model-link" to={modelPath(model.brand, model.model)}>
+                  <span className="model-symbol">
+                    <Icon name="car" />
+                  </span>
+                  <span>
+                    <small>{model.brand}</small>
+                    {model.model}
+                  </span>
+                </Link>
+              </th>
+              <td>
+                <strong>{number(model.count)}</strong> <span className="muted">véh.</span>
+              </td>
+              <td>
+                <span className={model.ready ? 'badge green' : 'badge neutral'}>
+                  {number(model.ready)} prêt{model.ready > 1 ? 's' : ''}
+                </span>
+              </td>
+              <td>
+                <Link
+                  className="icon-button"
+                  to={modelPath(model.brand, model.model)}
+                  aria-label={`Voir ${model.brand} ${model.model}`}
+                >
+                  <Icon name="arrow" />
+                </Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 }

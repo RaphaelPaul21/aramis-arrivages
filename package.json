@@ -1,7 +1,11 @@
 {
-  "dependencies": {
-    "apexcharts": "^3.45.2",
-    "chart.js": "^4.4.1",
-    "react-chartjs-2": "^5.2.0"
+  "name": "aramis-arrivages",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix vite-project run dev",
+    "build": "npm --prefix vite-project run build",
+    "lint": "npm --prefix vite-project run lint",
+    "test": "npm --prefix vite-project run test",
+    "preview": "npm --prefix vite-project run preview"
   }
 }

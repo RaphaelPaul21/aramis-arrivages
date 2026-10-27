@@ -1,14 +1,4 @@
-import Nav from "../Components/Nav"
-import ContentPageModele from '../Components/ContentPageModele'
-import "../Components/ContentPageModele.css"
-
-function PageModele () {
-    return(
-        <>
-            <Nav/>
-            <ContentPageModele/>
-        </>
-    )
+import ContentPageModele from '../Components/ContentPageModele';
+export default function PageModele() {
+  return <ContentPageModele />;
 }
-
-export default PageModele

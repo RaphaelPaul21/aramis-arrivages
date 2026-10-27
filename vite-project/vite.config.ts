@@ -1,6 +1,6 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import { fileURLToPath } from 'node:url'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { fileURLToPath } from 'node:url';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -9,12 +9,12 @@ export default defineConfig({
     alias: [
       {
         find: '@data',
-        replacement: fileURLToPath(new URL('./data', import.meta.url))
+        replacement: fileURLToPath(new URL('./data', import.meta.url)),
       },
       {
         find: '@',
-        replacement: fileURLToPath(new URL('./src', import.meta.url))
+        replacement: fileURLToPath(new URL('./src', import.meta.url)),
       },
-    ]
-  }
-})
+    ],
+  },
+});

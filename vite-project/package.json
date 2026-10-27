@@ -1,34 +1,21 @@
 {
-  "name": "vite-project",
+  "name": "aramis-arrivages-app",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "test": "node --test tests/*.test.cjs",
+    "preview": "vite preview",
+    "format": "prettier --write src tests scripts *.json *.ts *.html README.md"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.3",
-    "@emotion/styled": "^11.11.0",
     "@fontsource/roboto": "^5.0.8",
-    "@mui/icons-material": "^5.15.5",
-    "@mui/material": "^5.15.5",
-    "@mui/styled-engine-sc": "^6.0.0-alpha.12",
-    "@nivo/core": "^0.84.0",
-    "@nivo/funnel": "^0.84.0",
-    "@types/react-router": "^5.1.20",
-    "apexcharts": "^3.45.2",
-    "chart.js": "^4.4.1",
-    "lodash": "^4.17.21",
     "react": "^18.2.0",
-    "react-apexcharts": "^1.4.1",
-    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "6.4",
-    "recharts": "^2.10.4",
-    "styled-components": "^6.1.8"
+    "react-router-dom": "6.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.37",
@@ -39,6 +26,7 @@
     "eslint": "^8.53.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.4",
+    "prettier": "^3.9.10",
     "typescript": "^5.2.2",
     "vite": "^5.0.0"
   }
